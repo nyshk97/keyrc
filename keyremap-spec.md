@@ -379,7 +379,7 @@ case .tapDisabledByTimeout, .tapDisabledByUserInput:
 | 項目 | 方針 |
 | --- | --- |
 | 言語 | Swift（AppKit / Core Graphics） |
-| Bundle ID | `io.github.nyshk97.key-remapper`（TCC 永続化のため以後変更しない） |
+| Bundle ID | `io.github.nyshk97.keyrc`（dev は `.dev`。配布開始済み。TCC 永続化のため以後変更しない） |
 | 最低対応 OS | macOS 13 Ventura 以降 |
 | アーキテクチャ | arm64（Apple Silicon 専用で可） |
 | 署名 | Developer ID Application、notarization 必須 |
@@ -479,6 +479,9 @@ M0〜M2 完了、M3 はアプリ実装まで完了・配布まわりが未了、
 資格情報は keychain プロファイル `nyshk97-notary`（自作 Mac アプリ共通。中身は App Store Connect の
 API キーで、`.p8` は Dropbox の `secrets/`）。画面ロック中は読めないので preflight で止まる。
 `NOTARY_PROFILE` 環境変数で上書きできる。
+
+リポジトリのディレクトリを移動・改名した後の初回ビルドは `build/` を消してから行う（derivedData 内の SwiftPM
+キャッシュが旧絶対パスを指し、`There is no XCFramework found` で失敗する。`~/key-remapper` → `~/keyrc` で実例）。
 
 ### M4 残り（ドッグフーディング、〜2026-08-30 目安）
 
